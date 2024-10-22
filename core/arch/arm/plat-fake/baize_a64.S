@@ -6,12 +6,12 @@
 #include <asm.S>
 #include <arm.h>
 
-/* For Juno number the two A57s as 4 to 5 and A53s as 0 to 3 */
+/* the A57 core */
 FUNC get_core_pos_mpidr , :
-	/* Calculate CorePos = ((ClusterId ^ 1) * 4) + CoreId */
+	/* calculate CorePos = (ClusterId * 4) + CoreId */
 	and	x1, x0, #MPIDR_CPU_MASK
 	and	x0, x0, #MPIDR_CLUSTER_MASK
-	eor	x0, x0, #(1 << MPIDR_CLUSTER_SHIFT)
-	add	x0, x1, x0, LSR #6
+	lsl	x0, x0, #2
+	add	x0, x0, x1
 	ret
 END_FUNC get_core_pos_mpidr
