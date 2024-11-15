@@ -46,15 +46,6 @@ else
 $(call force,CFG_GIC,y)
 endif
 
-CFG_CORE_ASYNC_NOTIF ?= y
-CFG_CORE_SEL1_SPMC ?= y
-ifeq ($(CFG_CORE_SEL1_SPMC),y)
-CFG_CORE_ASYNC_NOTIF_GIC_INTID ?= 8
-else ifneq ($(CFG_CORE_SEL2_SPMC),y)
-CFG_CORE_ASYNC_NOTIF_GIC_INTID ?= 219
-$(error Error: need to configure)
-endif
-
 CFG_TEE_CORE_NB_CORE ?= 1
 CFG_BOOT_SECONDARY_REQUEST ?= n
 CFG_NUM_THREADS ?= 4
