@@ -44,9 +44,8 @@ $(call force,CFG_CORE_RESERVED_SHM,n)
 CFG_GIC ?= n
 else
 $(call force,CFG_GIC,y)
-endif
-
 $(call force,CFG_ARM_GICV3,y)
+endif
 
 CFG_TEE_CORE_NB_CORE ?= 1
 CFG_BOOT_SECONDARY_REQUEST ?= n

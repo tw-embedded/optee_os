@@ -234,30 +234,6 @@ driver_init(claim_console);
 #endif
 #endif
 
-#ifdef CFG_TZC400
-register_phys_mem_pgdir(MEM_AREA_IO_SEC, TZC400_BASE, TZC400_REG_SIZE);
-
-static TEE_Result init_tzc400(void)
-{
-	void *va;
-
-	DMSG("Initializing TZC400");
-
-	va = phys_to_virt(TZC400_BASE, MEM_AREA_IO_SEC, TZC400_REG_SIZE);
-	if (!va) {
-		EMSG("TZC400 not mapped");
-		panic();
-	}
-
-	tzc_init((vaddr_t)va);
-	tzc_dump_state();
-
-	return TEE_SUCCESS;
-}
-
-service_init(init_tzc400);
-#endif /*CFG_TZC400*/
-
 #if defined(PLATFORM_FLAVOR_qemu_virt)
 static void release_secondary_early_hpen(size_t pos)
 {

@@ -26,10 +26,6 @@
 
 #define GICD_OFFSET		0x10000
 #define GICC_OFFSET		0x0
-#ifdef CFG_ARM_GICV3
-#define GIC_REDIST_BASE		0x10020000
-#define GIC_REDIST_SIZE		0x04000000
-#endif
 
 #else
 #error "unknown platform flavor"
