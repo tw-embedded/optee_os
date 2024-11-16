@@ -46,6 +46,8 @@ else
 $(call force,CFG_GIC,y)
 endif
 
+$(call force,CFG_ARM_GICV3,y)
+
 CFG_TEE_CORE_NB_CORE ?= 1
 CFG_BOOT_SECONDARY_REQUEST ?= n
 CFG_NUM_THREADS ?= 4
