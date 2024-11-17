@@ -60,7 +60,7 @@ void boot_primary_init_intc(void)
 	gic_init_v3(GIC_BASE + GICC_OFFSET, GIC_BASE + GICD_OFFSET,
 		    GIC_REDIST_BASE);
 #else
-	gic_init(GIC_BASE + GICC_OFFSET, GIC_BASE + GICD_OFFSET);
+	//gic_init(GIC_BASE + GICC_OFFSET, GIC_BASE + GICD_OFFSET);
 #endif
 	if (IS_ENABLED(CFG_CORE_SEL1_SPMC) &&
 	    IS_ENABLED(CFG_CORE_ASYNC_NOTIF)) {
@@ -77,13 +77,6 @@ void boot_secondary_init_intc(void)
 	gic_init_per_cpu();
 }
 #endif /*CFG_GIC*/
-
-#ifdef CFG_CORE_HAFNIUM_INTC
-void boot_primary_init_intc(void)
-{
-	hfic_init();
-}
-#endif
 
 void plat_console_init(void)
 {

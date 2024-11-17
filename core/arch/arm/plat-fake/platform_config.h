@@ -21,11 +21,15 @@
 #define IT_UART1		16
 #define IT_SEC_PHY_TIMER	29
 
-#define CONSOLE_UART_BASE	UART1_BASE
-#define IT_CONSOLE_UART		IT_UART1
+#define CONSOLE_UART_BASE	UART0_BASE
+//#define IT_CONSOLE_UART		IT_UART1
 
 #define GICD_OFFSET		0x10000
 #define GICC_OFFSET		0x0
+#ifdef CFG_ARM_GICV3
+#define GIC_REDIST_BASE		0x10020000
+#define GIC_REDIST_SIZE		0x04000000
+#endif
 
 #else
 #error "unknown platform flavor"
