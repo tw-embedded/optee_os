@@ -11,7 +11,7 @@ FUNC get_core_pos_mpidr , :
 	/* calculate CorePos = (ClusterId * 4) + CoreId */
 	and	x1, x0, #MPIDR_CPU_MASK
 	and	x0, x0, #MPIDR_CLUSTER_MASK
-	lsl	x0, x0, #2
+	lsr	x0, x0, #6
 	add	x0, x0, x1
 	ret
 END_FUNC get_core_pos_mpidr
