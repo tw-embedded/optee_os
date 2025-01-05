@@ -14,6 +14,10 @@
 
 #if defined(PLATFORM_FLAVOR_baize)
 
+/* SHMEM is 0x31000000,0x00400000 */
+#define DRAM0_BASE           0x31400000
+#define DRAM0_SIZE           0x00400000
+
 #define GIC_BASE		0x10000000
 #define UART0_BASE		0x20000000
 #define UART1_BASE              0x20000000 // only one uart
